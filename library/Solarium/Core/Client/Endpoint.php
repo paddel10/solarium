@@ -233,6 +233,27 @@ class Endpoint extends Configurable
     }
 
     /**
+    * Get CAINFO
+    * 
+    * @return string
+    */
+    public function getCaInfo()
+    {
+        return $this->getOption('cainfo');
+    }
+
+    /**
+     * Set CAINFO option
+     *
+     * @param  string  $cainfo
+     * @return self Provides fluent interface
+     */
+    public function setCaInfo($cainfo)
+    {
+        return $this->setOption('cainfo', $cainfo);
+    }
+
+    /**
      * Get the base url for all requests
      *
      * Based on host, path, port and core options.

@@ -155,6 +155,12 @@ class Curl extends Configurable implements AdapterInterface
             curl_setopt($handler, CURLOPT_PROXY, $proxy);
         }
 
+        if ($cainfo = $endpoint->getCaInfo()) {
+            curl_setopt($handler, CURLOPT_SSL_VERIFYPEER, true);
+            curl_setopt($handler, CURLOPT_SSL_VERIFYHOST, 2);
+            curl_setopt($handler, CURLOPT_CAINFO, $cainfo);
+        }
+
         if (!isset($options['headers']['Content-Type'])) {
             if($method == Request::METHOD_GET){
                 $options['headers']['Content-Type'] = 'application/x-www-form-urlencoded; charset=utf-8';
