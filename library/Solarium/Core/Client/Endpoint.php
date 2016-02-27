@@ -253,6 +253,35 @@ class Endpoint extends Configurable
         return $this->setOption('cainfo', $cainfo);
     }
 
+   /**
+    * Get SSL verify host option - default: 2
+    *
+    * @return int
+    * 0: Don’t check the common name (CN) attribute
+    * 1: Check that the common name attribute at least exists
+    * 2: Check that the common name exists and that it matches the host name of the server
+    */
+    public function getSslVerifyHost()
+    {
+       $sslVerifyHost = $this->getOption('sslVerifyHost');
+       return ($sslVerifyHost) ? $sslVerifyHost : 2;
+    }
+
+    /**
+     * Set SSL verify host option
+     *
+     * @param  int $sslVerifyHost
+     * 0: Don’t check the common name (CN) attribute
+     * 1: Check that the common name attribute at least exists
+     * 2: Check that the common name exists and that it matches the host name of the server
+     *
+     * @return self Provides fluent interface
+     */
+    public function setSslVerifyHost($sslVerifyHost)
+    {
+        return $this->setOption('sslVerifyHost', $sslVerifyHost);
+    }
+    
     /**
      * Get the base url for all requests
      *

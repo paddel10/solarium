@@ -157,7 +157,7 @@ class Curl extends Configurable implements AdapterInterface
 
         if ($cainfo = $endpoint->getCaInfo()) {
             curl_setopt($handler, CURLOPT_SSL_VERIFYPEER, true);
-            curl_setopt($handler, CURLOPT_SSL_VERIFYHOST, 2);
+            curl_setopt($handler, CURLOPT_SSL_VERIFYHOST, $endpoint->getSslVerifyHost());
             curl_setopt($handler, CURLOPT_CAINFO, $cainfo);
         }
 
